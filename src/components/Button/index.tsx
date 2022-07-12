@@ -1,10 +1,15 @@
+import { ButtonHTMLAttributes } from 'react';
 import randomImg from '../../assets/shuffle.svg';
 
 import { Container } from './styles';
 
-export function Button() {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  getRandomMovie: () => void;
+}
+
+export function Button({ getRandomMovie }: ButtonProps) {
   return (
-    <Container>
+    <Container onClick={getRandomMovie}>
       <img
         src={randomImg}
         alt="Duas setas se cruzando em formato de x, representando um sinal de aleatório."
