@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from './components/Button';
 import { Header } from './components/Header';
 import { Movie } from './components/Movie';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import { Container } from './styles/home';
@@ -40,6 +41,10 @@ function App() {
     } catch {
       setMovie(undefined);
       setIsRequestFailed(true);
+      toast.error('Nenhum filme encontrado!', {
+        type: 'error',
+        theme: 'colored',
+      });
     }
   }
 
@@ -51,7 +56,7 @@ function App() {
       {movie ? <Movie movie={movie} /> : ''}
       {isRequestFailed && <MovieNotFound />}
       <Button getRandomMovie={handleGetRandomMovie} />
-      <p>
+      <p className="text">
         Clique em "Encontrar filme" que traremos informações de algum filme para
         você assistir hoje.
       </p>
