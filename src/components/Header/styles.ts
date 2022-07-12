@@ -15,5 +15,14 @@ export const Container = styled.header`
   h2 {
     font-size: 4rem;
     font-weight: bold;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 2rem;
+
+    h2 {
+      font-size: 3rem;
+    }
   }
 `;

@@ -17,4 +17,10 @@ export const Container = styled.main`
     text-align: center;
     margin-top: 2.6rem;
   }
+
+  @media screen and (max-width: 768px) {
+    > p {
+      font-size: 1.2rem;
+    }
+  }
 `;

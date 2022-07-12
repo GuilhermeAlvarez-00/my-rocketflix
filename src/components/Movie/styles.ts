@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 62.8rem;
+  width: min(100%, 62.8rem);
   display: flex;
   align-items: flex-start;
   gap: 3.4rem;
@@ -19,5 +19,11 @@ export const Container = styled.div`
   p {
     font-size: 1.6rem;
     margin-top: 1.9rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 3rem;
   }
 `;
