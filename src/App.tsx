@@ -8,6 +8,7 @@ import { Container } from './styles/home';
 
 import { apiKey } from '../secret';
 import { generateRandomId } from './utils/generateRandomId';
+import { MovieNotFound } from './components/MovieNotFound';
 
 interface MovieProps {
   id: number;
@@ -18,6 +19,7 @@ interface MovieProps {
 
 function App() {
   const [movie, setMovie] = useState<MovieProps>();
+  const [isRequestFailed, setIsRequestFailed] = useState(false);
 
   async function handleGetRandomMovie() {
     try {
@@ -34,15 +36,20 @@ function App() {
       };
 
       setMovie(movieData);
+      setIsRequestFailed(false);
     } catch {
-      console.log('Nenhum filme encontrado.');
+      setMovie(undefined);
+      setIsRequestFailed(true);
     }
   }
+
+  console.log(movie);
 
   return (
     <Container>
       <Header />
-      {movie ? <Movie movie={movie} /> : 'nenhum filme'}
+      {movie ? <Movie movie={movie} /> : ''}
+      {isRequestFailed && <MovieNotFound />}
       <Button getRandomMovie={handleGetRandomMovie} />
       <p>
         Clique em "Encontrar filme" que traremos informações de algum filme para
