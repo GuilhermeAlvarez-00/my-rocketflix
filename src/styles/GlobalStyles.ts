@@ -26,6 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     background-position: center;
     background-size: 100%;
     color: var(--title);
+    padding-bottom: 2rem;
   }
 
   a {
